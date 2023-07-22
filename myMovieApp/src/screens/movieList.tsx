@@ -31,7 +31,7 @@ function MovieList({navigation}: ScreenProp): JSX.Element {
         <FlatList
           data={data.popularMovies}
           renderItem={({item}) => (
-            <MoviePoster posterImage={item.poster_path} />
+            <MoviePoster posterImage={item.poster_path} movieId={item.id} />
           )}
           numColumns={2}
           keyExtractor={item => item.id}

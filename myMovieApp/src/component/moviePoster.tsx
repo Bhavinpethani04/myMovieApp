@@ -14,13 +14,17 @@ const windowWidth = Dimensions.get('window').width;
 
 type MoviePosterProps = {
   posterImage: string;
+  movieId: number;
 };
 
 const MoviePoster = (props: MoviePosterProps) => {
   const navigation = useNavigation<NavigateToMovieDetails>();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('MovieDetails')}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('MovieDetails', {movieId: props.movieId})
+      }>
       <Image
         source={{
           uri: `https://image.tmdb.org/t/p/w185/${props.posterImage}`,

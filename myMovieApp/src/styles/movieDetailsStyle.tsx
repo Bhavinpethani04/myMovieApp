@@ -1,6 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 const SCREEN_HIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
+import {colour, fontSizes} from '../utils/theam';
 
 export const movieDetailsStyle = StyleSheet.create({
   container: {
@@ -11,15 +12,15 @@ export const movieDetailsStyle = StyleSheet.create({
   movieTitleView: {
     width: SCREEN_WIDTH,
     height: SCREEN_HIGHT / 12,
-    backgroundColor: '#795548',
+    backgroundColor: colour.primary,
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingLeft: 15,
   },
   movieTitleText: {
     fontWeight: 'bold',
-    color: '#ffffff',
-    fontSize: 20,
+    color: colour.white,
+    fontSize: fontSizes.l,
   },
   moviePosterImageRatingInfoView: {
     width: SCREEN_WIDTH - 40,
@@ -35,12 +36,26 @@ export const movieDetailsStyle = StyleSheet.create({
   ratingReleaseDateInfoView: {
     flexDirection: 'column',
     alignContent: 'flex-start',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     height: SCREEN_WIDTH / 2,
     paddingLeft: 20,
   },
   movieInfoText: {
     width: SCREEN_WIDTH - 40,
     marginTop: 20,
+    color: colour.contectText,
+    fontSize: fontSizes.s,
+  },
+
+  dateTextStyle: {
+    fontSize: fontSizes.m,
+    color: colour.primary,
+    fontWeight: '500',
+  },
+  ratingTextStyle: {
+    fontSize: fontSizes.m,
+    color: colour.black,
+    fontWeight: '500',
+    marginTop: 10,
   },
 });
