@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MovieList from '../screens/movieList';
 import MovieDetails from '../screens/movieDetails';
-import {AppStackParamList} from '../route/types';
+import {AppStackParamList} from './routeTypes';
 import {colour} from '../utils/theam';
 import {headerTitle} from '../utils/theam';
 

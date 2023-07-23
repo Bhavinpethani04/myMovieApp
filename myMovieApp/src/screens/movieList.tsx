@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {movieListStyle} from '../styles/movieListStyle';
-import {ScreenProp} from '../route/types';
+import {ScreenProp} from '../route/routeTypes';
 import MoviePoster from '../component/moviePoster';
 import Loader from '../component/loader';
 import ErrorMessage from '../component/errorMessage';
 import {fetchPopularMovie} from '../redux/services';
 import {useReduxDispatch, useReduxSelector} from '../redux/store';
 import {errorMessages} from '../utils/theam';
+
 
 function MovieList({navigation}: ScreenProp): JSX.Element {
   const popularMovies = useReduxSelector(

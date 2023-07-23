@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image} from 'react-native';
 import {movieDetailsStyle} from '../styles/movieDetailsStyle';
-import {MovieDetailScreenProps} from '../route/types';
+import {MovieDetailScreenProps} from '../route/routeTypes';
 import {useReduxDispatch, useReduxSelector} from '../redux/store';
 import {fetchMovieDetails} from '../redux/services';
 import moment from 'moment';

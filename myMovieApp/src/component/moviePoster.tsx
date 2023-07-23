@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {NavigateToMovieDetails} from '../route/types';
+import {NavigateToMovieDetails} from '../route/routeTypes';
 import {BASE_URL_MOVIE_POSTER, IMAGE_SIZE} from '../redux/constants';
 
 const windowHeight = Dimensions.get('window').height;
