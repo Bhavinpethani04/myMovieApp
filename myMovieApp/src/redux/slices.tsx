@@ -4,11 +4,15 @@ import {fetchPopularMovie, fetchMovieDetails} from './services';
 import {RootState} from '../redux/store';
 
 interface InPopularMovies {
+  loading: boolean;
   popularMovies: [];
+  error: string | undefined;
 }
 
 const initialStatePopularMovie = {
+  loading: false,
   popularMovies: [],
+  error: undefined,
 } as InPopularMovies;
 
 export const getPopularMovie = createSlice({
@@ -16,8 +20,16 @@ export const getPopularMovie = createSlice({
   initialState: initialStatePopularMovie,
   reducers: {},
   extraReducers: builder => {
+    builder.addCase(fetchPopularMovie.pending, state => {
+      state.loading = true;
+    });
     builder.addCase(fetchPopularMovie.fulfilled, (state, action) => {
+      state.loading = false;
       state.popularMovies = action.payload.results;
+    });
+    builder.addCase(fetchPopularMovie.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message;
     });
   },
 });
@@ -84,7 +96,6 @@ export const getMovieDetails = createSlice({
     builder.addCase(
       fetchMovieDetails.fulfilled,
       (state, action: PayloadAction<InMovieDetailsKeys>) => {
-        console.log('payload', action.payload);
         state.movieDetails = action.payload;
       },
     );
