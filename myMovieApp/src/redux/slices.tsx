@@ -36,36 +36,6 @@ export const getPopularMovie = createSlice({
 
 export const getPopularMovieReducer = getPopularMovie.reducer;
 
-// export interface InMovieDetailsKeys {
-//   original_title?: string;
-//   poster_path: string;
-//   release_date: string;
-//   vote_average: number;
-//   overview: string;
-// }
-
-// export interface IMovieDetais {
-//   movieDetails: Array<InMovieDetailsKeys>;
-// }
-
-// const initialStateMovieDetails = {
-//   movieDetails: [],
-// } as IMovieDetais;
-
-// export const getMovieDetails = createSlice({
-//   name: 'getMovieDetailsInfo',
-//   initialState: initialStateMovieDetails,
-//   reducers: {},
-//   extraReducers: builder => {
-//     builder.addCase(fetchMovieDetails.fulfilled, (state, {payload}) => {
-//       state.movieDetails = payload.data;
-//     });
-//   },
-// });
-
-// export const userSelector = (state: RootState) => state.movieDetails;
-// export const getMovieDetailsReducer = getMovieDetails.reducer;
-
 export interface InMovieDetailsKeys {
   original_title: string;
   poster_path: string;
@@ -75,10 +45,13 @@ export interface InMovieDetailsKeys {
 }
 
 export interface IMovieDetais {
+  loading: boolean;
   movieDetails: InMovieDetailsKeys;
+  error: string | undefined;
 }
 
 const initialStateMovieDetails = {
+  loading: false,
   movieDetails: {
     original_title: '',
     poster_path: '',
@@ -86,6 +59,7 @@ const initialStateMovieDetails = {
     vote_average: 0,
     overview: '',
   },
+  error: undefined,
 } as IMovieDetais;
 
 export const getMovieDetails = createSlice({
@@ -93,12 +67,20 @@ export const getMovieDetails = createSlice({
   initialState: initialStateMovieDetails,
   reducers: {},
   extraReducers: builder => {
+    builder.addCase(fetchMovieDetails.pending, state => {
+      state.loading = true;
+    });
     builder.addCase(
       fetchMovieDetails.fulfilled,
       (state, action: PayloadAction<InMovieDetailsKeys>) => {
+        state.loading = false;
         state.movieDetails = action.payload;
       },
     );
+    builder.addCase(fetchMovieDetails.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message;
+    });
   },
 });
 

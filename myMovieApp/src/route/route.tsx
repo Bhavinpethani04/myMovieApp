@@ -5,6 +5,7 @@ import MovieList from '../screens/movieList';
 import MovieDetails from '../screens/movieDetails';
 import {AppStackParamList} from '../route/types';
 import {colour} from '../utils/theam';
+import {headerTitle} from '../utils/theam';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
@@ -15,15 +16,18 @@ function Route(): JSX.Element {
         <Stack.Screen
           name="MovieList"
           component={MovieList}
-          options={{headerTitle: 'Movie List', headerTintColor: colour.primary}}
+          options={{
+            headerTitle: headerTitle.movieListScreen,
+            headerTintColor: colour.primary,
+          }}
         />
         <Stack.Screen
           name="MovieDetails"
           component={MovieDetails}
           options={{
-            headerTitle: 'Movie Details',
+            headerTitle: headerTitle.movieDetailScreen,
             headerTintColor: colour.primary,
-            headerBackTitle: 'BACK',
+            headerBackTitle: headerTitle.backButtonTitle,
           }}
         />
       </Stack.Navigator>

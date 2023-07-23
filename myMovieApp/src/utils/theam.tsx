@@ -15,3 +15,16 @@ export const fontSizes = {
   l: getFontSize(18),
   xl: getFontSize(20),
 };
+
+export const errorMessages = {
+  movieListNotFound: 'Something Went Wrong With The Movie List',
+  movieDetailNotFound: 'Something Went Wrong With The Movie Detail',
+};
+
+export const ratingConst = 10;
+
+export const headerTitle = {
+  movieListScreen: 'Movie List',
+  movieDetailScreen: 'Movie Details',
+  backButtonTitle: 'BACK',
+};

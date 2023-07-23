@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NavigateToMovieDetails} from '../route/types';
+import {BASE_URL_MOVIE_POSTER, IMAGE_SIZE} from '../redux/constants';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -20,14 +21,15 @@ type MoviePosterProps = {
 const MoviePoster = (props: MoviePosterProps) => {
   const navigation = useNavigation<NavigateToMovieDetails>();
 
+  const goToMovieDetailScreen = () => {
+    navigation.navigate('MovieDetails', {movieId: props.movieId});
+  };
+
   return (
-    <TouchableOpacity
-      onPress={() =>
-        navigation.navigate('MovieDetails', {movieId: props.movieId})
-      }>
+    <TouchableOpacity onPress={goToMovieDetailScreen}>
       <Image
         source={{
-          uri: `https://image.tmdb.org/t/p/w185/${props.posterImage}`,
+          uri: `${BASE_URL_MOVIE_POSTER}${IMAGE_SIZE}/${props.posterImage}`,
         }}
         style={styles.moviePoster}
       />
@@ -38,7 +40,7 @@ const MoviePoster = (props: MoviePosterProps) => {
 const styles = StyleSheet.create({
   moviePoster: {
     width: windowWidth / 2,
-    height: windowHeight / 3,
+    height: (windowWidth / 2) * 1.5,
   },
 });
 

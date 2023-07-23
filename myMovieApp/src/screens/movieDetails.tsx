@@ -4,26 +4,32 @@ import {movieDetailsStyle} from '../styles/movieDetailsStyle';
 import {MovieDetailScreenProps} from '../route/types';
 import {useReduxDispatch, useReduxSelector} from '../redux/store';
 import {fetchMovieDetails} from '../redux/services';
-import {IMovieDetais, userSelector, InMovieDetailsKeys} from '../redux/slices';
 import moment from 'moment';
+import Loader from '../component/loader';
+import ErrorMessage from '../component/errorMessage';
+import {errorMessages, ratingConst} from '../utils/theam';
+import {BASE_URL_MOVIE_POSTER, IMAGE_SIZE} from '../redux/constants';
 
 function MovieDetails({route}: MovieDetailScreenProps): JSX.Element {
-  const [isLoading, setIsLoading] = useState(true);
-  const selectedUsers = useReduxSelector(userSelector);
+  const loading = useReduxSelector(state => state.movieDetails.loading);
   const movieDetails = useReduxSelector(
     state => state.movieDetails.movieDetails,
   );
+  const error = useReduxSelector(state => state.movieDetails.error);
   const dispatch = useReduxDispatch();
 
   useEffect(() => {
-    dispatch(fetchMovieDetails(route.params.movieId)).then(() => {
-      setIsLoading(false);
-    });
+    dispatch(fetchMovieDetails(route.params.movieId));
   }, []);
 
-  if (isLoading) {
-    return <Text>Loading...</Text>;
+  if (loading) {
+    return <Loader />;
   }
+
+  if (error) {
+    return <ErrorMessage message={errorMessages.movieDetailNotFound} />;
+  }
+
   return (
     <View style={movieDetailsStyle.container}>
       {/* movie title */}
@@ -38,7 +44,7 @@ function MovieDetails({route}: MovieDetailScreenProps): JSX.Element {
         <Image
           style={movieDetailsStyle.posterImage}
           source={{
-            uri: `https://image.tmdb.org/t/p/w185/${movieDetails.poster_path}`,
+            uri: `${BASE_URL_MOVIE_POSTER}${IMAGE_SIZE}/${movieDetails.poster_path}`,
           }}
         />
         <View style={movieDetailsStyle.ratingReleaseDateInfoView}>
@@ -46,7 +52,7 @@ function MovieDetails({route}: MovieDetailScreenProps): JSX.Element {
             {moment(movieDetails.release_date).format('LL')}
           </Text>
           <Text style={movieDetailsStyle.ratingTextStyle}>
-            10 / {movieDetails.vote_average.toFixed(1)}
+            {movieDetails.vote_average.toFixed(1)} / {ratingConst}
           </Text>
         </View>
       </View>

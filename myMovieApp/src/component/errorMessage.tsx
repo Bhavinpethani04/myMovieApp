@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
   errorMessageText: {
     color: colour.contectText,
     fontSize: fontSizes.l,
+    width:'80%',
+    alignItems:'center'
   },
 });
 

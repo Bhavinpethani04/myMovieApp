@@ -7,12 +7,9 @@ import Loader from '../component/loader';
 import ErrorMessage from '../component/errorMessage';
 import {fetchPopularMovie} from '../redux/services';
 import {useReduxDispatch, useReduxSelector} from '../redux/store';
-
-type ItemProps = {id: string; poster_path: string};
+import {errorMessages} from '../utils/theam';
 
 function MovieList({navigation}: ScreenProp): JSX.Element {
-  // const [movieList, setMovieList] = useState<ItemProps[]>([]);
-
   const popularMovies = useReduxSelector(
     (state: any) => state.popularMovie.popularMovies,
   );
@@ -30,7 +27,7 @@ function MovieList({navigation}: ScreenProp): JSX.Element {
   }
 
   if (error) {
-    return <ErrorMessage message={'Something Went Wrong with Movie List'} />;
+    return <ErrorMessage message={errorMessages.movieListNotFound} />;
   }
 
   return (
