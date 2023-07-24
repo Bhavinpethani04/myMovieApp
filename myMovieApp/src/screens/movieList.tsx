@@ -9,6 +9,7 @@ import {fetchPopularMovie} from '../redux/services';
 import {useReduxDispatch, useReduxSelector} from '../redux/store';
 import {errorMessages} from '../utils/theam';
 
+//function for display popular movie list with use of poster component
 function MovieList(): JSX.Element {
   const popularMovies = useReduxSelector(
     (state: any) => state.popularMovie.popularMovies,

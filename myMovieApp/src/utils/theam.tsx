@@ -16,6 +16,7 @@ export const fontSizes = {
   xl: getFontSize(20),
 };
 
+//error messages for error component
 export const errorMessages = {
   movieListNotFound: 'Something Went Wrong With The Movie List or API KEY',
   movieDetailNotFound: 'Something Went Wrong With The Movie Detail or API KEY',
@@ -23,6 +24,7 @@ export const errorMessages = {
 
 export const ratingConst = 10;
 
+//header titles for all screens
 export const headerTitle = {
   movieListScreen: 'Movie List',
   movieDetailScreen: 'Movie Details',

@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Image, StyleSheet, ActivityIndicator} from 'react-native';
 import {colour} from '../utils/theam';
 
+//Common dsiplay loader function
 const Loader = () => {
   return (
     <ActivityIndicator

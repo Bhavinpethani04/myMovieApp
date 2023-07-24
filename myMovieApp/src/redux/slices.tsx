@@ -3,6 +3,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {fetchPopularMovie, fetchMovieDetails} from './services';
 import {RootState} from '../redux/store';
 
+//Slice for Call Popular Movie Service and Store data in store with error handling.
 interface InPopularMovies {
   loading: boolean;
   popularMovies: [];
@@ -36,6 +37,7 @@ export const getPopularMovie = createSlice({
 
 export const getPopularMovieReducer = getPopularMovie.reducer;
 
+//Slice for Call Movie Details Service and Store data in store with error handling. 
 export interface InMovieDetailsKeys {
   original_title: string;
   poster_path: string;

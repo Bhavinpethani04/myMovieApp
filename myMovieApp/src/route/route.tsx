@@ -8,7 +8,7 @@ import {colour} from '../utils/theam';
 import {headerTitle} from '../utils/theam';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
-
+//route function for navigation
 function Route(): JSX.Element {
   return (
     <NavigationContainer>

@@ -18,6 +18,7 @@ type MoviePosterProps = {
   movieId: number;
 };
 
+//Display MoviePoster component for Movie List
 const MoviePoster = (props: MoviePosterProps) => {
   const navigation = useNavigation<NavigateToMovieDetails>();
 

@@ -6,6 +6,7 @@ type ErrorMessageProps = {
   message: string;
 };
 
+//Common display error message function 
 const ErrorMessage = (props: ErrorMessageProps) => {
   return (
     <View style={styles.errorMessageView}>

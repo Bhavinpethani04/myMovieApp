@@ -3,6 +3,7 @@ import axios from 'axios';
 import {BASE_URL} from '../redux/constants';
 import {API_KEY} from '@env';
 
+//API call for Popular Movie List
 export const fetchPopularMovie = createAsyncThunk(
   'getPopularMovieList/fetchPopularMovie',
   async (data, thunkApi) => {
@@ -15,6 +16,7 @@ export const fetchPopularMovie = createAsyncThunk(
   },
 );
 
+//API call for get Particular Movie Details with Movie ID
 export const fetchMovieDetails = createAsyncThunk(
   'getMovieDetailsInfo/fetchMovieDetails',
   async (movieId: number, thunkApi) => {
