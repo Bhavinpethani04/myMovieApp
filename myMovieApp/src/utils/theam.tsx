@@ -17,8 +17,8 @@ export const fontSizes = {
 };
 
 export const errorMessages = {
-  movieListNotFound: 'Something Went Wrong With The Movie List',
-  movieDetailNotFound: 'Something Went Wrong With The Movie Detail',
+  movieListNotFound: 'Something Went Wrong With The Movie List or API KEY',
+  movieDetailNotFound: 'Something Went Wrong With The Movie Detail or API KEY',
 };
 
 export const ratingConst = 10;

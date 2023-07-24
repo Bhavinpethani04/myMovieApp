@@ -19,7 +19,9 @@ function MovieDetails({route}: MovieDetailScreenProps): JSX.Element {
   const dispatch = useReduxDispatch();
 
   useEffect(() => {
-    dispatch(fetchMovieDetails(route.params.movieId));
+    if (route.params.movieId) {
+      dispatch(fetchMovieDetails(route.params.movieId));
+    }
   }, []);
 
   if (loading) {

@@ -4,7 +4,9 @@
 
 import 'react-native';
 import React from 'react';
-import App from '../App';
+import MovieList from '../src/screens/movieList';
+import store from '../src/redux/store';
+import {Provider} from 'react-redux';
 
 // Note: import explicitly to use the types shiped with jest.
 import {it} from '@jest/globals';
@@ -13,5 +15,9 @@ import {it} from '@jest/globals';
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
-  renderer.create(<App />);
+  renderer.create(
+    <Provider store={store}>
+      <MovieList />
+    </Provider>,
+  );
 });

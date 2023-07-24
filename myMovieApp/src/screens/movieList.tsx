@@ -9,8 +9,7 @@ import {fetchPopularMovie} from '../redux/services';
 import {useReduxDispatch, useReduxSelector} from '../redux/store';
 import {errorMessages} from '../utils/theam';
 
-
-function MovieList({navigation}: ScreenProp): JSX.Element {
+function MovieList(): JSX.Element {
   const popularMovies = useReduxSelector(
     (state: any) => state.popularMovie.popularMovies,
   );
@@ -32,7 +31,7 @@ function MovieList({navigation}: ScreenProp): JSX.Element {
   }
 
   return (
-    <View style={movieListStyle.container}>
+    <View testID="movieListTestID" style={movieListStyle.container}>
       <FlatList
         data={popularMovies}
         renderItem={({item}) => (
